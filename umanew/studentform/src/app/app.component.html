@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAND-Assesment</title>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Registration Form</h1>
+
+
+        <form class="child" #myForm="ngForm" action="" id="form" (ngSubmit)="validate(myForm)">
+
+            <!-- ./welcome.html  -->
+
+
+            <!-- ============================ text ==========================================  -->
+
+
+            <div class="child">
+                <label for="user_id"> User id:</label><span style="color: red;">*</span>
+                <input type="text" id="user_id" placeholder="Enter User Id" size="30" name="user_id" ngModel required 
+                    maxlength="12" minlength="5">
+                    <div *ngIf=" (myForm.controls['user_id'].invalid && myForm.controls['user_id'].touched)" class="error">
+                      <p *ngIf="(myForm.controls['user_id'].errors?.['required'])">User Id is required</p>
+                      <p *ngIf="myForm.controls['user_id'].errors?.['minlength']">Enter minimum 5 characters</p>
+                    </div>
+
+                    <!-- minlength="5" -->
+
+                <!--size attribute specifies the visible width, in characters, of an <input> element. -->
+
+            </div>
+
+
+
+
+
+            <!-- ============================  password ==========================================  -->
+
+            <div>
+                <label for="PW"> Password: </label><span style="color: red;">*</span>
+                <input type="password" id="PW" placeholder="Enter password" minlength="7" maxlength="12" name="pwd" ngModel required>
+                <div *ngIf="(myForm.controls['pwd'].invalid && myForm.controls['pwd'].touched)" class="error">
+                  <p *ngIf="myForm.controls['pwd'].errors?.['required']">Password is required</p>
+                  <p *ngIf="myForm.controls['pwd'].errors?.['minlength']">Enter minimum 5 characters</p>
+                </div>
+
+                <!-- minlength="7"  -->
+            </div>
+
+
+
+
+            <!-- ============================  name ==========================================  -->
+
+
+            <div>
+                <label for="name"> Name:</label><span style="color: red;">*</span>
+                <input type="text" id="name" placeholder="" size="30" name="name" ngModel required maxlength="50">
+
+                <div *ngIf="myForm.controls['name'].invalid && myForm.controls['name'].touched" class="error">
+                  <p *ngIf="(myForm.controls['name'].errors?.['required'])">Name is required</p>
+                </div>
+
+            </div>
+
+            <!-- ============================ address ==========================================  -->
+
+
+            <div>
+                <label for="Add"> Address:</label>
+                <input type="text" id="Add" placeholder="" size="30" maxlength="100">
+
+
+            </div>
+
+
+            <!-- ============================ "select"  ==========================================  -->
+
+
+
+            <div>
+
+                <label for="cont">Country:</label><span style="color: red;">*</span>
+                <select id="cont" placeholder=" selcet contey"  name="country" ngModel required>
+                    <option></option>
+                    <option>Indian</option>
+                    <option>Nepal</option>
+                    <option>Srilanka</option>
+                </select>
+
+                <div *ngIf="myForm.controls['country'].invalid && myForm.controls['country'].touched" class="error">
+                  <p *ngIf="(myForm.controls['country'].errors?.['required'])">Country is required</p>
+                </div>
+
+
+            </div>
+
+
+            <!-- ============================ number ==========================================  -->
+
+            <div>
+                <label for="PIN"> ZIP Code: </label><span style="color: red;">*</span>
+                <input type="number" name="Zip-c" ngModel required min="100000" max="999999">
+                <div *ngIf="myForm.controls['Zip-c'].invalid && myForm.controls['Zip-c'].touched" class="error">
+                  <p *ngIf="(myForm.controls['Zip-c'].errors?.['required'])">Zip Code is required</p>
+                </div>
+            </div>
+
+            <!-- ============================ Email ==========================================  -->
+
+            <div>
+                <label for="Email"> Email:</label><span style="color: red;">*</span>
+                <input type="email" id="Email" name="email" ngModel required>
+                <div *ngIf="myForm.controls['email'].invalid && myForm.controls['email'].touched" class="error">
+                  <p *ngIf="(myForm.controls['email'].errors?.['required'])">Email is required</p>
+                </div>
+            </div>
+
+            <!-- ============================ radio ==========================================  -->
+            <div>
+                <label>Sex:</label><span style="color: red;">*</span>
+                <input type="radio" name="sex" value="true" ngModel required> Male
+                <input type="radio" name="sex" value="false" ngModel required> Female
+                <div *ngIf="myForm.controls['sex'].invalid && myForm.controls['sex'].touched" class="error">
+                  <p *ngIf="(myForm.controls['sex'].errors?.['required'])">Gender is required</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- ============================ checkbox ==========================================  -->
+
+            <div>
+
+                <label> Language: </label><span style="color: red;">*</span>
+                <input  type="checkbox" name="Language" ngModel value="true"> English
+                <input  type="checkbox" name="Language" ngModel value="false"> Hindi
+
+            </div>
+
+
+
+            <!-- ============================  "textarea" ==========================================  -->
+
+
+            <div style=" display: flex; flex-flow:row-wrap; align-items: start; ">
+                <label for="AC" style="margin-right: 10px;">About:</label>
+                <textarea name="about" ngModel id="AC" cols="80" rows="9" placeholder="write info here"></textarea>
+            </div>
+
+
+
+
+            <!-- ============================ submit ==========================================  -->
+
+            <div id="subdiv">
+
+                <button class="btn btn-primary" >Submit</button>
+
+            </div>
+
+        </form>
+        <div Class="error" *ngIf="myForm.submitted && myForm.invalid">
+          <p>Please fill all Fields.</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
